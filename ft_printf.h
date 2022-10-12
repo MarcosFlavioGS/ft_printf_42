@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:28:22 by coder             #+#    #+#             */
-/*   Updated: 2022/10/11 05:45:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/12 02:30:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,8 @@
 #include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdarg.h>
+#include <stdio.h>
+
+int	ft_printf(const char *placeholders, ...);
 #endif
