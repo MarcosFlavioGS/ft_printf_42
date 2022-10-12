@@ -6,11 +6,11 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/12 03:10:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/12 15:34:20 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "headers/ft_printf.h"
 
 int	ft_printf(const char *placeholders, ...)
 {
@@ -26,7 +26,7 @@ int	ft_printf(const char *placeholders, ...)
 	if (placeholders[i++] == 'd')
 		{
 		int x = va_arg(ap, int);
-		ft_putnbr(x, 1);
+		ft_putnbr_fd(x, 1);
 		}
 		else if (placeholders[i++] == 'f')
 		{
@@ -39,6 +39,7 @@ int	ft_printf(const char *placeholders, ...)
 			ft_putchar_fd(x, 1);
 		}
 		else
-			ft_putstr(placeholders);
+			ft_putstr_fd(*placeholders, 1);
 	}
+	return (0);
 }

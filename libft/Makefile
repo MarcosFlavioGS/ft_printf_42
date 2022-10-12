@@ -6,7 +6,7 @@
 #    By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 00:19:23 by mflavio-          #+#    #+#              #
-#    Updated: 2022/09/27 00:19:26 by mflavio-         ###   ########.fr        #
+#    Updated: 2022/10/12 14:36:25 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ $(NAME): $(OBJS)
 		   	ar -rcs $(NAME) $(OBJS)
 
 $(OBJS): $(SRCS)
-		   	cc $(FLAGS) -c $(SRCS)
+		   	cc $(FLAGS) -c $(SRCS) -I../headers/
 
 bonus:	${BONUS_OBJS} 
 
