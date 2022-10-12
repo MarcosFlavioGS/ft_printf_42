@@ -6,7 +6,7 @@
 #    By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 05:31:15 by coder             #+#    #+#              #
-#    Updated: 2022/10/12 16:00:21 by mflavio-         ###   ########.fr        #
+#    Updated: 2022/10/12 18:57:55 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FLAGS = -Wall -Werror -Wextra
 
 all: ${NAME}
 
-test:
+test: all
 	cc ${FLAGS} -o printf main.c ${SRC} libft/libft.a
 
 ${NAME}: ${OBJ}
