@@ -6,11 +6,21 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/12 15:34:20 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/12 18:11:45 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/ft_printf.h"
+
+static void	checker(char c, va_list ap)
+{
+	if (c == 'c')
+		return (ft_putchar_fd(va_arg(ap, int), 1));
+	if (c == 's')
+		return (ft_putstr_fd(va_arg(ap, char *), 1));
+	else
+		return (ft_putchar_fd(c, 1));
+}
 
 int	ft_printf(const char *placeholders, ...)
 {
@@ -18,28 +28,25 @@ int	ft_printf(const char *placeholders, ...)
 	int		i;
 	int		arg_len;
 
+	if (!placeholders)
+		return (-1);
 	i = 0;
 	arg_len = ft_strlen(placeholders);
 	va_start(ap, placeholders);
-	while (i < arg_len)
+	while (*placeholders)
 	{
-	if (placeholders[i++] == 'd')
+		if (*placeholders == '%')
 		{
-		int x = va_arg(ap, int);
-		ft_putnbr_fd(x, 1);
-		}
-		else if (placeholders[i++] == 'f')
-		{
-			double	x = va_arg(ap, double);
-			ft_putnbr_fd(x, 1);
-		}
-		else if (placeholders[i] == 'c')
-		{
-			char	x = va_arg(ap, char);
-			ft_putchar_fd(x, 1);
+			placeholders++;
+			checker(*placeholders, ap);
 		}
 		else
-			ft_putstr_fd(*placeholders, 1);
+		{
+			i++;
+			ft_putchar_fd(*placeholders, 1);
+		}
+		placeholders++;
 	}
-	return (0);
+	va_end(ap);
+	return (i);
 }

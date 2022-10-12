@@ -2,6 +2,6 @@
 
 int main(void)
 {
-	printf("%c", ft_printf("df", 10, 5.2));
+	printf("%c", ft_printf("%c%s", 10, 5.2));
 	return (0);
 }
