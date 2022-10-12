@@ -6,7 +6,7 @@
 #    By: coder <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 05:31:15 by coder             #+#    #+#              #
-#    Updated: 2022/10/11 05:47:20 by coder            ###   ########.fr        #
+#    Updated: 2022/10/12 13:58:38 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,19 @@ FLAGS = -Wall -Werror -Wextra
 
 all: ${NAME}
 
+test: all
+	cc ${FLAGS} -o printf *.c *.a
+
 ${NAME}: ${OBJ}
 	ar -rcs $@ ${OBJ}
 
 ${OBJ}: ${SRC}
-	cc ${FLAGS} -c $@
+	cc ${FLAGS} -c ${SRC}
 
 clean: 
-	@rm -f *.o
+	rm -f *.o
 
 fclean: clean
-	@rm -f ${NAME}
+	rm -f ${NAME}
 
 re: clean fclean all
