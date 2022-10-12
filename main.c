@@ -3,6 +3,8 @@
 
 int main(void)
 {
-	printf("%c", ft_printf("%c%s", 10, 5.2));
+  char c = 'A';
+  char str[] = "Hello";
+	printf("%c", ft_printf("first char: %c Now the string: %s\n", c, str));
 	return (0);
 }

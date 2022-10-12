@@ -26,12 +26,12 @@ int	ft_printf(const char *placeholders, ...)
 {
 	va_list	ap;
 	int		i;
-	int		arg_len;
+	//int		arg_len;
 
 	if (!placeholders)
 		return (-1);
 	i = 0;
-	arg_len = ft_strlen(placeholders);
+	//arg_len = ft_strlen(placeholders);
 	va_start(ap, placeholders);
 	while (*placeholders)
 	{
