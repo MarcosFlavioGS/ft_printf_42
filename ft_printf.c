@@ -14,24 +14,24 @@
 
 static void	checker(char c, va_list ap)
 {
-	if (c == 'c')
-		return (ft_putchar_fd(va_arg(ap, int), 1));
-	if (c == 's')
-		return (ft_putstr_fd(va_arg(ap, char *), 1));
-	else
-		return (ft_putchar_fd(c, 1));
+  if (c == 'c')
+    return (ft_putchar_fd(va_arg(ap, int), 1));
+  else if (c == 's')
+    return (ft_putstr_fd(va_arg(ap, char *), 1));
+  else if (c == 'd' || c == 'i')
+    return (ft_putnbr_fd(va_arg(ap, int), 1));
+  else
+    return (ft_putchar_fd(c, 1));
 }
 
 int	ft_printf(const char *placeholders, ...)
 {
 	va_list	ap;
 	int		i;
-	//int		arg_len;
 
 	if (!placeholders)
 		return (-1);
 	i = 0;
-	//arg_len = ft_strlen(placeholders);
 	va_start(ap, placeholders);
 	while (*placeholders)
 	{

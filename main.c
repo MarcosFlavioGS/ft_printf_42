@@ -3,9 +3,10 @@
 
 int main(void)
 {
-  char c = 'A';
-  char str[] = "Hello";
-  printf("printf: first char = %c Now the string = %s\n", c, str);
-	ft_printf("ft_printf: first char = %c Now the string = %s\n", c, str);
+  char  c = 'A';
+  char  str[] = "Hello";
+  int   n = 1;
+  printf("printf: char = %c string = %s Number = %i\n", c, str, n);
+	ft_printf("ft_printf: char = %c string = %s Number = %i\n", c, str, n);
 	return (0);
 }
