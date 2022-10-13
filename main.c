@@ -5,6 +5,7 @@ int main(void)
 {
   char c = 'A';
   char str[] = "Hello";
-	printf("%c", ft_printf("first char: %c Now the string: %s\n", c, str));
+  printf("printf: first char = %c Now the string = %s\n", c, str);
+	ft_printf("ft_printf: first char = %c Now the string = %s\n", c, str);
 	return (0);
 }
