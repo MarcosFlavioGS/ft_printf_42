@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 20:37:47 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/14 23:30:23 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_swapp(char *str)
 	}
 }
 
-static void	hex_convert(int c, int ascii)
+static void	hex_convert(unsigned long c, int ascii)
 {
 	int		remainder;
 	int		i;
@@ -58,6 +58,17 @@ static void	hex_convert(int c, int ascii)
 	free(ret);
 }
 
+static void	ft_ptr(unsigned long n)
+{
+	if (n == 0)
+		ft_putstr_fd(OSNULL, 1);
+	else
+	{
+		ft_putstr_fd("0x", 1);
+		hex_convert(n, 87);
+	}
+}
+
 static void	checker(char c, va_list ap)
 {
 	if (c == 'c')
@@ -65,15 +76,15 @@ static void	checker(char c, va_list ap)
 	else if (c == 's')
 		return (ft_putstr_fd(va_arg(ap, char *), 1));
 	else if (c == 'p')
-		return ;
+		return (ft_ptr(va_arg(ap, unsigned long)));
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr_fd(va_arg(ap, int), 1));
 	else if (c == 'u')
 		return /*não sei ainda*/;
 	else if (c == 'X')
-		return (hex_convert(va_arg(ap, int), 55));
+		return (hex_convert(va_arg(ap, unsigned long), 55));
 	else if (c == 'x')
-		return (hex_convert(va_arg(ap, int), 87));
+		return (hex_convert(va_arg(ap, unsigned long), 87));
 	else
 		return (ft_putchar_fd(c, 1));
 }
