@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 23:30:23 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/14 23:48:49 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_swapp(char *str)
 {
-	char 	tmp;
+	char	tmp;
 	int		i;
 	int		j;
 
@@ -34,8 +34,9 @@ static void	hex_convert(unsigned long c, int ascii)
 {
 	int		remainder;
 	int		i;
-	char	*ret = malloc(100);
+	char	*ret;
 
+	ret = malloc(100);
 	i = 0;
 	remainder = 0;
 	while (c != 0)
@@ -80,7 +81,7 @@ static void	checker(char c, va_list ap)
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr_fd(va_arg(ap, int), 1));
 	else if (c == 'u')
-		return /*não sei ainda*/;
+		return (ft_putnbr_fd(va_arg(ap, unsigned int), 1));
 	else if (c == 'X')
 		return (hex_convert(va_arg(ap, unsigned long), 55));
 	else if (c == 'x')
