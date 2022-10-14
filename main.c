@@ -6,7 +6,8 @@ int main(void)
   char  c = 'A';
   char  str[] = "Hello";
   int   n = 500;
-  printf("printf: char = %c; string = %s; Number = %i; HeX = %X; Hex = %x\n", c, str, n, n, n);
-	ft_printf("ft_printf: char = %c; string = %s; Number = %i; HeX = %X; Hex = %x\n", c, str, n, n, n);
+  int	*ptr = &n;
+  printf("printf: char = %c; string = %s; Number = %i; HeX = %X; Hex = %x; Ptr = %p\n", c, str, n, n, n, ptr);
+	ft_printf("ft_printf: char = %c; string = %s; Number = %i; HeX = %X; Hex = %x; Ptr = %p\n", c, str, n, n, n, ptr);
 	return (0);
 }

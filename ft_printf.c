@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 20:28:07 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/14 20:37:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	checker(char c, va_list ap)
 	else if (c == 's')
 		return (ft_putstr_fd(va_arg(ap, char *), 1));
 	else if (c == 'p')
-		return /*Ainda não sei*/;
+		return ;
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr_fd(va_arg(ap, int), 1));
 	else if (c == 'u')
