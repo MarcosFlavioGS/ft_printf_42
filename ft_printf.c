@@ -6,11 +6,29 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 05:14:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/14 20:28:07 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/ft_printf.h"
+
+static void	ft_swapp(char *str)
+{
+	char 	tmp;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (j > i)
+	{
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		i++;
+		j--;
+	}
+}
 
 static void	hex_convert(int c, int ascii)
 {
@@ -35,7 +53,9 @@ static void	hex_convert(int c, int ascii)
 		}
 		c /= 16;
 	}
+	ft_swapp(ret);
 	ft_putstr_fd(ret, 1);
+	free(ret);
 }
 
 static void	checker(char c, va_list ap)
