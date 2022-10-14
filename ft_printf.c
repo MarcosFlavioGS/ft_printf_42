@@ -6,28 +6,36 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 01:55:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/14 05:14:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/ft_printf.h"
 
-static void	hex_convert(int c, int x)
+static void	hex_convert(int c, int ascii)
 {
-	int	remainder;
+	int		remainder;
+	int		i;
+	char	*ret = malloc(100);
 
-	remainder = c;
-	if (x)
+	i = 0;
+	remainder = 0;
+	while (c != 0)
 	{
-	while (remainder % 16 != 0)
-	{
-		return ;
+		remainder = c % 16;
+		if (remainder < 10)
+		{
+			ret[i] = remainder + 48;
+			i++;
+		}
+		else
+		{
+			ret[i] = remainder + ascii;
+			i++;
+		}
+		c /= 16;
 	}
-	}
-	else
-	{
-		return ;
-	}
+	ft_putstr_fd(ret, 1);
 }
 
 static void	checker(char c, va_list ap)
@@ -37,15 +45,15 @@ static void	checker(char c, va_list ap)
 	else if (c == 's')
 		return (ft_putstr_fd(va_arg(ap, char *), 1));
 	else if (c == 'p')
-		return (não sei ainda);
+		return /*Ainda não sei*/;
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr_fd(va_arg(ap, int), 1));
 	else if (c == 'u')
-		return (não sei ainda);
-	else if (c == 'x')
-		return (hex_convert(va_arg(ap, int), 1));
+		return /*não sei ainda*/;
 	else if (c == 'X')
-		return (hex_convert(va_arg(ap, int), 0));
+		return (hex_convert(va_arg(ap, int), 55));
+	else if (c == 'x')
+		return (hex_convert(va_arg(ap, int), 87));
 	else
 		return (ft_putchar_fd(c, 1));
 }
