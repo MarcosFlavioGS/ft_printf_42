@@ -22,6 +22,8 @@ all: ${NAME}
 
 test: all
 	cc ${FLAGS} -o printf main.c ${SRC} ${NAME}
+	rm -f libft/*.o
+	rm -f *.o
 
 ${NAME}: ${OBJ}
 	make -C libft
