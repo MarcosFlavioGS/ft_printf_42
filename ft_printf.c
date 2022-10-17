@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 23:48:49 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/18 00:33:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_swapp(char *str)
 	}
 }
 
-static void	hex_convert(unsigned long c, int ascii)
+static int	hex_convert(unsigned long c, int ascii)
 {
 	int		remainder;
 	int		i;
@@ -55,39 +55,48 @@ static void	hex_convert(unsigned long c, int ascii)
 		c /= 16;
 	}
 	ft_swapp(ret);
-	ft_putstr_fd(ret, 1);
+	i += ft_putstr_fd(ret, 1);
 	free(ret);
+	return (i);
 }
 
-static void	ft_ptr(unsigned long n)
+static int	ft_ptr(unsigned long n)
 {
+	int i;
+
+	i = 0;
 	if (n == 0)
-		ft_putstr_fd(OSNULL, 1);
+		i += ft_putstr_fd(OSNULL, 1);
 	else
 	{
-		ft_putstr_fd("0x", 1);
-		hex_convert(n, 87);
+		i += ft_putstr_fd("0x", 1);
+		i += hex_convert(n, 87);
 	}
+	return (i);
 }
 
-static void	checker(char c, va_list ap)
+static int	checker(char const c, va_list ap)
 {
+	int len;
+
+	len = 0;
 	if (c == 'c')
-		return (ft_putchar_fd(va_arg(ap, int), 1));
+		len += ft_putchar_fd(va_arg(ap, int), 1);
 	else if (c == 's')
-		return (ft_putstr_fd(va_arg(ap, char *), 1));
+		len += ft_putstr_fd(va_arg(ap, char *), 1);
 	else if (c == 'p')
-		return (ft_ptr(va_arg(ap, unsigned long)));
+		len += ft_ptr(va_arg(ap, unsigned long));
 	else if (c == 'd' || c == 'i')
-		return (ft_putnbr_fd(va_arg(ap, int), 1));
+		len += (ft_putnbr_fd(va_arg(ap, int), 1));
 	else if (c == 'u')
-		return (ft_putnbr_fd(va_arg(ap, unsigned int), 1));
+		len += ft_putnbr_fd(va_arg(ap, unsigned int), 1);
 	else if (c == 'X')
-		return (hex_convert(va_arg(ap, unsigned long), 55));
+		len += hex_convert(va_arg(ap, unsigned long), 55);
 	else if (c == 'x')
-		return (hex_convert(va_arg(ap, unsigned long), 87));
+		len += hex_convert(va_arg(ap, unsigned long), 87);
 	else
-		return (ft_putchar_fd(c, 1));
+		len += (ft_putchar_fd(c, 1));
+	return (len);
 }
 
 int	ft_printf(const char *placeholders, ...)
@@ -104,7 +113,7 @@ int	ft_printf(const char *placeholders, ...)
 		if (*placeholders == '%')
 		{
 			placeholders++;
-			checker(*placeholders, ap);
+			i += checker(*placeholders, ap);
 		}
 		else
 		{
