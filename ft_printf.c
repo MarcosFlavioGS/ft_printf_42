@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/18 02:08:31 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/18 04:39:29 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_swapp(char *str)
 	}
 }
 
-static int	hex_convert(unsigned int c, int ascii)
+static int	hex_convert(unsigned long int c, int ascii)
 {
 	int		remainder;
 	int		i;
@@ -81,7 +81,7 @@ static int	checker(char const c, va_list ap)
 
 	len = 0;
 	if (c == 'c')
-		len += ft_putchar_fd((char) va_arg(ap, int), 1);
+		len += ft_putchar_fd(va_arg(ap, int), 1);
 	else if (c == 's')
 		len += ft_putstr_fd(va_arg(ap, char *), 1);
 	else if (c == 'p')
@@ -91,9 +91,9 @@ static int	checker(char const c, va_list ap)
 	else if (c == 'u')
 		len += ft_putnbr_fd(va_arg(ap, unsigned int), 1);
 	else if (c == 'X')
-		len += hex_convert(va_arg(ap, unsigned int), 55);
+		len += hex_convert(va_arg(ap, unsigned long int), 55);
 	else if (c == 'x')
-		len += hex_convert(va_arg(ap, unsigned int), 87);
+		len += hex_convert(va_arg(ap, unsigned long int), 87);
 	else
 		len += ft_putchar_fd(c, 1);
 	return (len);
@@ -106,7 +106,7 @@ int	ft_printf(const char *placeholders, ...)
 
 	if (!placeholders)
 		return (-1);
-	len = 1;
+	len = 0;
 	va_start(ap, placeholders);
 	while (*placeholders)
 	{
