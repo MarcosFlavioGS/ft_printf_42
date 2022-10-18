@@ -6,7 +6,7 @@
 /*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 00:19:12 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/10/18 01:41:25 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/18 05:32:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+// printf
+int		ft_numlen(unsigned long int num);
 
 #endif

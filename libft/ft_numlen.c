@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   numlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 00:17:03 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/10/18 05:14:26 by coder            ###   ########.fr       */
+/*   Created: 2022/10/18 05:22:44 by mflavio-          #+#    #+#             */
+/*   Updated: 2022/10/18 05:31:50 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	ft_putstr_fd(char *s, int fd)
+int	ft_numlen(unsigned long int num)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	if (!s || !fd)
-		return (i);
-	while (*s)
+	count = 0;
+	if (num <= 0)
+		count++;
+	while (num != 0)
 	{
-		write(fd, s++, sizeof(char));
-		i++;
+		num = num / 10;
+		count++;
 	}
-	return (i);
+	return (count);
 }

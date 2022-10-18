@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/18 04:49:29 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/18 05:32:23 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	hex_convert(unsigned long int c, int ascii)
 		i += ft_putchar_fd('0', 1);
 		return (i);
 	}
-	ret = malloc(100);
+	ret = malloc(ft_numlen(c + 1));
 	remainder = 0;
 	while (c != 0)
 	{
@@ -61,7 +61,7 @@ static int	hex_convert(unsigned long int c, int ascii)
 
 static int	ft_ptr(unsigned long int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == 0)
@@ -79,6 +79,8 @@ static int	checker(char const c, va_list ap)
 	int	len;
 
 	len = 0;
+	if (c == '%')
+		len += ft_putchar_fd('%', 1);
 	if (c == 'c')
 		len += ft_putchar_fd(va_arg(ap, int), 1);
 	else if (c == 's')
@@ -93,8 +95,6 @@ static int	checker(char const c, va_list ap)
 		len += hex_convert(va_arg(ap, unsigned long int), 55);
 	else if (c == 'x')
 		len += hex_convert(va_arg(ap, unsigned long int), 87);
-	else
-		len += ft_putchar_fd(c, 1);
 	return (len);
 }
 
