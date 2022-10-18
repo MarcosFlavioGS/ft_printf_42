@@ -6,7 +6,7 @@
 #    By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 05:31:15 by coder             #+#    #+#              #
-#    Updated: 2022/10/12 19:12:29 by coder            ###   ########.fr        #
+#    Updated: 2022/10/18 02:13:23 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ ${OBJ}: ${SRC}
 	cc ${FLAGS} -c ${SRC}
 
 clean: 
-	rm -f *.o
+	rm -f ${OBJ}
 
 fclean: clean
 	rm -f ${NAME}

@@ -6,7 +6,7 @@
 #    By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 00:19:23 by mflavio-          #+#    #+#              #
-#    Updated: 2022/10/12 14:36:25 by coder            ###   ########.fr        #
+#    Updated: 2022/10/18 02:16:00 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ ${BONUS_OBJS}:
 	ar -rcs ${NAME}  $@
 
 clean:
-	rm -f *.o
+	rm -f ${OBJS} ${BONUS_OBJS}
 
 fclean:	clean
 	rm -f $(NAME)
