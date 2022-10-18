@@ -6,7 +6,7 @@
 /*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 00:16:53 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/10/18 00:30:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/18 01:40:50 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_putnbr_fd(long n, int fd)
 	{
 		num = n % 10 + '0';
 		n /= 10;
-		len += ft_putnbr(n);
+		len += ft_putnbr_fd(n, fd);
 		len += write(1, &num, 1);
 	}
 	else if (0 <= n && n <= 9)
@@ -35,7 +35,7 @@ int	ft_putnbr_fd(long n, int fd)
 	{
 		n *= (-1);
 		len += write(1, "-", 1);
-		len += ft_putnbr(n);
+		len += ft_putnbr_fd(n, fd);
 	}
 	return (len);
 }

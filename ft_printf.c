@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/18 00:33:08 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/18 02:08:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_swapp(char *str)
 	}
 }
 
-static int	hex_convert(unsigned long c, int ascii)
+static int	hex_convert(unsigned int c, int ascii)
 {
 	int		remainder;
 	int		i;
@@ -55,12 +55,12 @@ static int	hex_convert(unsigned long c, int ascii)
 		c /= 16;
 	}
 	ft_swapp(ret);
-	i += ft_putstr_fd(ret, 1);
+	i = ft_putstr_fd(ret, 1);
 	free(ret);
 	return (i);
 }
 
-static int	ft_ptr(unsigned long n)
+static int	ft_ptr(unsigned long int n)
 {
 	int i;
 
@@ -77,51 +77,48 @@ static int	ft_ptr(unsigned long n)
 
 static int	checker(char const c, va_list ap)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (c == 'c')
-		len += ft_putchar_fd(va_arg(ap, int), 1);
+		len += ft_putchar_fd((char) va_arg(ap, int), 1);
 	else if (c == 's')
 		len += ft_putstr_fd(va_arg(ap, char *), 1);
 	else if (c == 'p')
-		len += ft_ptr(va_arg(ap, unsigned long));
+		len += ft_ptr(va_arg(ap, unsigned long int));
 	else if (c == 'd' || c == 'i')
-		len += (ft_putnbr_fd(va_arg(ap, int), 1));
+		len += ft_putnbr_fd(va_arg(ap, int), 1);
 	else if (c == 'u')
 		len += ft_putnbr_fd(va_arg(ap, unsigned int), 1);
 	else if (c == 'X')
-		len += hex_convert(va_arg(ap, unsigned long), 55);
+		len += hex_convert(va_arg(ap, unsigned int), 55);
 	else if (c == 'x')
-		len += hex_convert(va_arg(ap, unsigned long), 87);
+		len += hex_convert(va_arg(ap, unsigned int), 87);
 	else
-		len += (ft_putchar_fd(c, 1));
+		len += ft_putchar_fd(c, 1);
 	return (len);
 }
 
 int	ft_printf(const char *placeholders, ...)
 {
 	va_list	ap;
-	int		i;
+	int		len;
 
 	if (!placeholders)
 		return (-1);
-	i = 0;
+	len = 1;
 	va_start(ap, placeholders);
 	while (*placeholders)
 	{
 		if (*placeholders == '%')
 		{
 			placeholders++;
-			i += checker(*placeholders, ap);
+			len += checker(*placeholders, ap);
 		}
 		else
-		{
-			i++;
-			ft_putchar_fd(*placeholders, 1);
-		}
+			len += ft_putchar_fd(*placeholders, 1);
 		placeholders++;
 	}
 	va_end(ap);
-	return (i);
+	return (len);
 }
