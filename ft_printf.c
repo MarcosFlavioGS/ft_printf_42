@@ -6,7 +6,7 @@
 /*   By: coder <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/18 04:39:29 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/18 04:49:29 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,21 @@ static int	hex_convert(unsigned long int c, int ascii)
 	int		i;
 	char	*ret;
 
-	ret = malloc(100);
 	i = 0;
+	if (!c)
+	{
+		i += ft_putchar_fd('0', 1);
+		return (i);
+	}
+	ret = malloc(100);
 	remainder = 0;
 	while (c != 0)
 	{
 		remainder = c % 16;
 		if (remainder < 10)
-		{
-			ret[i] = remainder + 48;
-			i++;
-		}
+			ret[i++] = remainder + 48;
 		else
-		{
-			ret[i] = remainder + ascii;
-			i++;
-		}
+			ret[i++] = remainder + ascii;
 		c /= 16;
 	}
 	ft_swapp(ret);
