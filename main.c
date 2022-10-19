@@ -84,5 +84,23 @@ int main(void)
 	ret = ft_printf("ft_printf: %p", p) - 3;
 	ret += ft_printf("\n");
 	ft_printf("ft_printf printed %i characters\n\n", ret);
+
+	ft_printf("Passing direct address to %%p\n\n");
+
+	ret = printf("printf: %p\n", &n);
+	printf("printf printed %i characters\n", ret);
+	ret = ft_printf("ft_printf: %p\n", &n) - 3;
+	ft_printf("ft_printf printed %i characters\n\n", ret);
+
+	ft_printf("%%s flag\n");
+	ft_printf("Passing a null string to %%s\n\n");
+
+	char	*s = NULL;
+	ret = printf("printf: ");
+	ret += printf("%s\n", s);
+	printf("printf printed %i characters\n", ret);
+	ret = ft_printf("ft_printf: ") - 3;
+	ret += ft_printf("%s\n", s);
+	ft_printf("ft_printf printed %i characters\n\n", ret);
 	return (0);
 }

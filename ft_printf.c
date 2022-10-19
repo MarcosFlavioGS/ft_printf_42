@@ -6,7 +6,7 @@
 /*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/18 05:32:23 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/19 01:48:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ static int	checker(char const c, va_list ap)
 	len = 0;
 	if (c == '%')
 		len += ft_putchar_fd('%', 1);
-	if (c == 'c')
-		len += ft_putchar_fd(va_arg(ap, int), 1);
+	else if (c == 'c')
+		len += ft_putchar_fd((char) va_arg(ap, int), 1);
 	else if (c == 's')
 		len += ft_putstr_fd(va_arg(ap, char *), 1);
 	else if (c == 'p')
@@ -92,9 +92,9 @@ static int	checker(char const c, va_list ap)
 	else if (c == 'u')
 		len += ft_putnbr_fd(va_arg(ap, unsigned int), 1);
 	else if (c == 'X')
-		len += hex_convert(va_arg(ap, unsigned long int), 55);
+		len += hex_convert(va_arg(ap, unsigned int), 55);
 	else if (c == 'x')
-		len += hex_convert(va_arg(ap, unsigned long int), 87);
+		len += hex_convert(va_arg(ap, unsigned int), 87);
 	return (len);
 }
 
