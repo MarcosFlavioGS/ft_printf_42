@@ -53,8 +53,9 @@ static int	hex_convert(unsigned long int c, int ascii)
 			ret[i++] = remainder + ascii;
 		c /= 16;
 	}
+	ret[i] = '\0';
 	ft_swapp(ret);
-	i = ft_putstr_fd(ret, 1);
+	i += ft_putstr_fd(ret, 1);
 	free(ret);
 	return (i);
 }
