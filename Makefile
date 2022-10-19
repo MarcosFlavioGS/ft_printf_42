@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile1                                          :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 05:31:15 by coder             #+#    #+#              #
-#    Updated: 2022/10/19 00:55:13 by coder            ###   ########.fr        #
+#    Updated: 2022/10/19 02:26:01 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,11 @@ FLAGS = -Wall -Werror -Wextra
 all: ${NAME}
 
 test: all
-	cc ${FLAGS} -o printf main.c ${SRC} ${NAME}
-	rm -f libft/*.o
-	rm -f *.o
+	@cc ${FLAGS} -o printf main.c ${SRC} ${NAME}
+	@make fclean -C libft/
+	@make fclean
+	@clear
+	@./printf
 
 ${NAME}: ${OBJ}
 	make -C libft
