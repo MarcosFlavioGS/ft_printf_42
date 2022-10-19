@@ -20,23 +20,26 @@ int main(void)
 	
 	printf("Test 2. Separated flags: \n\n");
 	
-	printf("%%x flag\n");
+	printf("%%x flag\n\n");
+
 	ret = printf("printf: %x\n", 42);
 	printf("printf printed %i characters\n", ret);
 	ret = ft_printf("ft_printf: %x\n", 42) - 3;
 	printf("ft_printf printed %i characters\n\n", ret);
 	
-	printf("%%X flag\n");
+	printf("%%X flag\n\n");
+
 	ret = printf("printf: ");
-	ret += printf("%X", 42);
+	ret += printf("%X", 10);
 	ret += printf("\n");
 	printf("printf printed %i characters\n", ret);
 	ret = ft_printf("ft_printf: ") - 3;
-	ret += ft_printf("%X", 42);
+	ret += ft_printf("%X", 10);
 	ret += ft_printf("\n");
 	printf("ft_printf printed %i characters\n\n", ret);
 
-	printf("%%p flag\n");
+	printf("%%p flag\n\n");
+
 	ret = printf("printf: ");
 	ret += printf("%p\n", ptr);
 	printf("printf printed %i characters\n", ret);
@@ -44,7 +47,8 @@ int main(void)
 	ret += ft_printf("%p\n", ptr);
 	printf("ft_printf printed %i characters\n\n", ret);
 
-	printf("%%u flag\n");
+	printf("%%u flag\n\n");
+
 	ret = printf("printf: ");
 	ret += printf("%u", 142);
 	ret += printf("\n");
@@ -54,7 +58,8 @@ int main(void)
 	ret += ft_printf("\n");
 	ft_printf("ft_printf printed %i characters\n\n", ret);
 
-	ft_printf("%%u flag with negative number\n");
+	ft_printf("%%u flag with negative number\n\n");
+
 	ret = printf("printf: ");
 	ret += printf("%u", -142);
 	ret += printf("\n");
@@ -62,6 +67,24 @@ int main(void)
 	ret = ft_printf("ft_printf: ") - 3;
 	ret += ft_printf("%u", -142);
 	ret += ft_printf("\n");
+	ft_printf("ft_printf printed %i characters\n\n", ret);
+
+	ft_printf("%%i flag with negative\n\n");
+
+	ret = printf("printf: %i\n", -142);
+	printf("printf printed %i characters\n", ret);
+	ret = ft_printf("ft_printf: ") - 3;
+	ret += ft_printf("%i", -142);
+	ret += ft_printf("\n");
+	ft_printf("ft_printf printed %i characters\n\n", ret);
+
+	ft_printf("%%d flag with negative\n\n");
+
+	ret = printf("printf: %d\n", -142);
+	printf("printf printed %i characters\n", ret);
+	ret = ft_printf("ft_printf: ") - 3;
+	ret += ft_printf("%d", -142);
+	ret += ft_printf("\n", ret);
 	ft_printf("ft_printf printed %i characters\n\n", ret);
 
 	printf("Test 3. null\n\n");
