@@ -6,7 +6,7 @@
 /*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/19 01:48:40 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/20 03:41:17 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	hex_convert(unsigned long int c, int ascii)
 	}
 	ret[i] = '\0';
 	ft_swapp(ret);
-	i += ft_putstr_fd(ret, 1);
+	i = ft_putstr_fd(ret, 1);
 	free(ret);
 	return (i);
 }

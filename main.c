@@ -47,6 +47,15 @@ int main(void)
 	ret += ft_printf("%p\n", ptr);
 	printf("ft_printf printed %i characters\n\n", ret);
 
+	printf("%%p flag with (void *)-1 typecasting\n\n");
+
+	ret = printf("printf: ");
+ 	ret += printf("%p\n", (void *)-1);
+ 	printf("printf printed %i characters\n", ret);
+ 	ret = ft_printf("ft_printf: ") - 3;
+ 	ret += ft_printf("%p\n", (void *)-1);
+ 	printf("ft_printf printed %i characters\n\n", ret);
+
 	printf("%%u flag\n\n");
 
 	ret = printf("printf: ");
