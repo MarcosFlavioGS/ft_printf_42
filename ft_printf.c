@@ -6,7 +6,7 @@
 /*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 05:29:47 by coder             #+#    #+#             */
-/*   Updated: 2022/10/20 03:41:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/20 04:30:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_swapp(char *str)
 	}
 }
 
-static int	hex_convert(unsigned long int c, int ascii)
+static int	hex_convert(unsigned long c, int ascii)
 {
 	int		remainder;
 	int		i;
