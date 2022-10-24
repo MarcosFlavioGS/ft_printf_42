@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/21 03:13:22 by mflavio-          #+#    #+#              #
-#    Updated: 2022/10/21 03:13:29 by mflavio-         ###   ########.fr        #
+#    Created: 2022/10/11 05:31:15 by coder             #+#    #+#              #
+#    Updated: 2022/10/19 02:26:01 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,13 @@ OBJ = ${SRC:.c=.o}
 FLAGS = -Wall -Werror -Wextra
 
 all: ${NAME}
+
+test: all
+	@cc ${FLAGS} -o printf main.c ${SRC} ${NAME}
+	@make fclean -C libft/
+	@make fclean
+	@clear
+	@./printf
 
 ${NAME}: ${OBJ}
 	make -C libft
