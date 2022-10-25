@@ -21,11 +21,11 @@ FLAGS = -Wall -Werror -Wextra
 all: ${NAME}
 
 test: all
-	@cc ${FLAGS} -o printf main.c ${SRC} ${NAME}
+	@cc ${FLAGS} -o test main.c ${SRC} ${NAME}
 	@make fclean -C libft/
 	@make fclean
 	@clear
-	@./printf
+	@./test
 
 ${NAME}: ${OBJ}
 	make -C libft
